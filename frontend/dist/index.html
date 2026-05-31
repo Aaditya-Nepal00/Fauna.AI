@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fauna.AI — Camera Trap Monitor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              900: '#0F1A14',
+              800: '#1A2E1F',
+              700: '#1B4332',
+              600: '#2D6A4F',
+              500: '#40916C',
+              400: '#52B788',
+              300: '#74C69D',
+            },
+            tiger: {
+              600: '#E36414',
+              500: '#F77F00',
+              400: '#FCBF49',
+            },
+            alert: {
+              high:   '#DC2626',
+              medium: '#F77F00',
+              low:    '#65A30D',
+            },
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', "'Segoe UI'", 'Roboto', 'sans-serif'],
+            mono: ["'Cascadia Code'", "'Fira Code'", 'Consolas', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    :root { color-scheme: dark; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body, #root { height: 100%; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0F1A14; color: #e5e7eb; }
+    .mono { font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #1A2E1F; }
+    ::-webkit-scrollbar-thumb { background: #2D6A4F; border-radius: 3px; }
+  </style>
+  <script type="module" crossorigin src="/assets/index-CDzWulRA.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

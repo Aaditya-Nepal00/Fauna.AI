@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fauna.AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base:    '#15110D',
+            surface: '#1E1812',
+            raised:  '#271F17',
+            line:    '#3A3128',
+            amber: {
+              DEFAULT: '#E8853A',
+              hover:   '#F2974C',
+              dim:     '#8A5526',
+            },
+            teal: {
+              DEFAULT: '#4A9D8E',
+              dim:     '#2E5F56',
+            },
+            ink: {
+              DEFAULT: '#F4EFE6',
+              soft:    '#B0A595',
+              mute:    '#7A7062',
+            },
+            ok:     '#6BA368',
+            warn:   '#D9A441',
+            danger: '#C5503E',
+          },
+          fontFamily: {
+            display: ['Fraunces', 'serif'],
+            sans:    ['Archivo', 'sans-serif'],
+            mono:    ['"IBM Plex Mono"', 'monospace'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body, #root { height: 100%; margin: 0; padding: 0; }
+    :root { color-scheme: dark; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1E1812; }
+    ::-webkit-scrollbar-thumb { background: #3A3128; border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-base text-ink font-sans">
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
