@@ -1,40 +1,59 @@
 # FaunaAI
 
-Camera-trap processing pipeline for WWF Nepal's tiger survey.
+Camera-trap image triage for WWF Nepal's tiger survey.
 
 ## What it does
 
-Camera traps across Chitwan and Bardia produce thousands of images per survey cycle — most of them blank frames triggered by wind or shadows. FaunaAI ingests the raw images, filters out the noise, detects animals, classifies species down to Bengal Tiger, and surfaces behavioral anomalies to field teams through a live dashboard. The goal is to cut the weeks between raw capture and actionable data down to hours.
+Camera traps across Chitwan and Bardia produce thousands of images per survey cycle — most of them empty frames triggered by wind, shadow, or heat. Sorting them by hand burns weeks of ranger time before any real analysis can begin.
+
+FaunaAI's working core is **FrameGuard**: it ingests the raw images, discards the noise (empty, blurry, and overexposed frames), detects animals, identifies tigers, and sorts every tiger by which flank — left or right — is facing the camera. That left/right separation is the groundwork for identifying individual tigers from their stripe patterns, the same way researchers do in mark-recapture studies.
+
+Species identification for non-tiger wildlife and long-term behavioral anomaly detection are part of the broader vision (see [Roadmap](#roadmap-future-vision)) — FrameGuard is what's built and running today.
+
+The goal: cut the gap between raw capture and usable data from weeks down to hours.
 
 ## Architecture
 
 ![FaunaAI architecture](docs/architecture/architecture.svg)
 
-The diagram shows how images flow from upload through both pipeline layers into SQLite, with results streaming to the React dashboard in real time over SSE.
+Images flow from upload through the FrameGuard pipeline into SQLite, with results streaming to the React dashboard in real time over SSE. The diagram also shows the planned SpeciesID and PulseScan layers (see Roadmap).
 
-## How it works
+## How FrameGuard works
 
-Every image runs through two layers sequentially, coordinated by `PipelineOrchestrator`.
+Every uploaded image runs through FrameGuard, coordinated by `PipelineOrchestrator`, and exits with exactly one of five labels: **TIGER**, **OTHER_WILDLIFE**, **HUMAN**, **NON_OBJECT**, or **BLUR**.
 
-**Layer 1 — FrameGuard** handles triage. The primary detector is MegaDetectorV6 (`MDV6-yolov9-c` via PytorchWildlife), which is purpose-built for camera-trap imagery and handles dense canopy, night IR, and cluttered backgrounds well. YOLO26n is available as a fallback via `DETECTOR_BACKEND=yolo`. Night images get CLAHE preprocessing before detection to recover detail from underexposed IR frames.
+The steps run in order:
 
-When an animal is detected, the bounding box crop goes to an EfficientNet-B0 (ImageNet weights) classifier. If the top prediction is class 292 (*tiger, Panthera tigris*), the frame is labeled **TIGER** and a second EfficientNet-B0 — fine-tuned for two-class flank orientation — determines whether the animal's left or right side is visible. That flank label feeds individual re-ID from stripe patterns. Blur is evaluated on the crop, not the whole image, with separate thresholds for night and day (IR sensors naturally produce lower Laplacian variance).
+**1. Overexposure / flare gate.** Before anything else, blown-out frames — a full white-out, or a night flash misfire that leaves a bright flare — are caught and sent straight to **BLUR**. This runs first so a flare can't be mistaken for an animal or a person. A frame with more than 40% blown-out pixels (or more than 5% in a night frame) is treated as unusable.
 
-Every frame exits FrameGuard with one of five labels: **TIGER**, **OTHER_WILDLIFE**, **HUMAN**, **NON_OBJECT**, or **BLUR**.
+**2. Detection.** The primary detector is **MegaDetectorV6** (`MDV6-yolov9-c`, via PytorchWildlife), purpose-built for camera-trap imagery — it handles dense canopy, night IR, and cluttered backgrounds far better than a general-purpose object detector. YOLO26n is available as a fallback via `DETECTOR_BACKEND=yolo`. Night frames get **CLAHE** contrast enhancement before detection to recover detail from underexposed IR.
 
-**Layer 2 — SpeciesID** only runs on `OTHER_WILDLIFE` frames. Tiger and human are already resolved upstream. It classifies through an EfficientNet-B4 fine-tuned on Nepal fauna (Bengal Tiger, Greater One-horned Rhinoceros, Snow Leopard, Red Panda, Clouded Leopard, Asian Elephant, Gaur, Sambar Deer, Indian Leopard, Himalayan Black Bear, Sloth Bear, Nilgai). Without production weights it falls back to deterministic demo mode seeded on the filename hash — same image always returns the same result.
+**3. Blur check on the crop.** Blur is evaluated on the detected animal's crop, not the whole frame, with separate day and night thresholds. IR sensors naturally produce lower Laplacian variance, so a single threshold would wrongly flag sharp night tigers as blurry. Only genuinely motion-smeared animals go to **BLUR**.
 
-**After the batch — PulseScan** runs statistical analysis across all detections: 2-hour activity windows, 30-day rolling baselines per camera per species, five anomaly types (sudden absence, frequency spike, activity time shift, group size collapse, new species appearance). No model weights — pure pandas and SciPy. Alerts are written to the database and appear in the dashboard's alert panel.
+**4. Tiger vs. other wildlife.** The animal crop goes to an **EfficientNet-B0** (ImageNet weights) classifier. If the top prediction is class 292 (*tiger, Panthera tigris*), the frame is labeled **TIGER**; any other animal becomes **OTHER_WILDLIFE**. A frame with only a person is **HUMAN**. A clear frame with nothing detected is **NON_OBJECT** — and because empty night frames are dark by nature, the empty-frame blur test uses its own night-aware threshold so a dark-but-empty frame isn't mislabeled as blur.
 
-Progress streams to the dashboard in real time via SSE as each image completes. PulseScan fires after the last image in the batch.
+**5. Flank classification.** For tigers, a second **EfficientNet-B0**, fine-tuned on two classes, determines whether the **left** or **right** flank is facing the camera. It runs on the full frame — matching how it was trained — and reliably calls left vs. right on clear broadside shots. Low-confidence calls (below 0.60) are flagged **UNCERTAIN** rather than guessed; an honest "needs review" beats a confidently wrong label in front of field experts.
+
+**6. Flank crops for re-ID.** Each tiger's flank is cropped tight and saved to `backend/data/crops/`. The dashboard's **Flanks** view shows these isolated stripe patterns grouped by left and right — the exact input a future individual-ID model would index on, since every tiger's stripes are unique, like a fingerprint.
+
+Results stream to the dashboard in real time over SSE as each image finishes processing.
+
+## Dashboard
+
+A React dashboard with a dark "field instrument" theme where teams can:
+
+- Create surveys and cameras, then upload or drag-and-drop image batches
+- Watch triage results populate live as images process
+- Browse results by category — Tiger / Other wildlife / Human / Non-object / Blur — with tigers split into **Left flank**, **Right flank**, and **Uncertain** sections
+- Open the **Flanks** view to inspect isolated stripe-pattern crops
 
 ## Stack
 
-**Backend** — Python 3.11, FastAPI, SQLAlchemy async, aiosqlite, PyTorch 2.3, TorchVision, Ultralytics, PytorchWildlife, OpenCV, NumPy, pandas, SciPy, sse-starlette, watchdog
+**Backend** — Python 3.11, FastAPI, SQLAlchemy (async), aiosqlite, PyTorch 2.3, TorchVision, PytorchWildlife (MegaDetector), Ultralytics (YOLO fallback), OpenCV, NumPy, sse-starlette, watchdog
 
-**Frontend** — React 18, React Router 6, Vite 5
+**Frontend** — React 18, React Router 6, Vite 5, Tailwind CSS
 
-**DB** — SQLite via aiosqlite
+**Database** — SQLite via aiosqlite
 
 ## Getting started
 
@@ -43,11 +62,11 @@ Progress streams to the dashboard in real time via SSE as each image completes. 
 ```bash
 cd backend
 pip install -r requirements.txt
-pip install PytorchWildlife      # not in requirements.txt — needed for MegaDetector
+pip install PytorchWildlife      # needed for MegaDetector
 python run.py
 ```
 
-API starts at `http://localhost:8000`. On first run it creates `fauna.db` and all required data directories automatically.
+The API starts at `http://localhost:8000`. On first run it creates `fauna.db` and all required data directories automatically.
 
 > To skip MegaDetector and avoid the weights download, set `DETECTOR_BACKEND=yolo` in a `.env` file inside `backend/`. YOLO26n is used instead.
 
@@ -59,7 +78,7 @@ npm install
 npm run dev
 ```
 
-Dashboard runs at `http://localhost:5173`.
+The dashboard runs at `http://localhost:5173`.
 
 **Folder watcher** (optional)
 
@@ -68,22 +87,21 @@ cd backend
 python -m app.watcher <survey_id> <camera_id> <path/to/watch/folder>
 ```
 
-Drop an image into the watched folder and it runs through the full pipeline immediately, printing results to console. Useful for field demos where you want a live feed without the upload UI.
+Drop an image into the watched folder and it runs through FrameGuard immediately, printing results to the console — useful for live field demos without the upload UI.
 
 ## Model weights and data
 
-The pipeline runs in demo mode without any weights installed. Predictions are deterministic (seeded on filename hash), so the full UI behaves consistently during development.
+FrameGuard runs with real inference out of the box:
 
-To enable real inference, place these files in `backend/models/weights/`:
+- **MegaDetectorV6** weights (`MDV6-yolov9-c`) download automatically on first startup and cache in your PyTorch hub directory.
+- **`flank_classifier.pt`** — the fine-tuned EfficientNet-B0 flank model — lives in `backend/models/weights/`.
 
-- `species_id.pt` — EfficientNet-B4 fine-tuned on Nepal fauna (Layer 2)
-- `flank_classifier.pt` — EfficientNet-B0 fine-tuned for tiger flank orientation (Layer 1)
+The `data/` directory and all raw/processed images are not committed to the repo. The server creates `backend/data/raw/`, `backend/data/processed/`, `backend/data/crops/`, and `backend/data/review_queue/` on startup.
 
-MegaDetectorV6 weights (`MDV6-yolov9-c.pt`) are downloaded automatically by PytorchWildlife on first startup and cached in your PyTorch hub directory.
+## Roadmap (future vision)
 
-The `data/` directory and all raw/processed images are not in the repo. The server creates `backend/data/raw/`, `backend/data/processed/`, and `backend/data/review_queue/` on startup automatically.
+These pieces are designed and partially scaffolded, not yet live:
 
-## What's not done yet
-
-- Real EfficientNet-B4 inference in SpeciesID — `_real_predict()` currently raises `NotImplementedError`
-- Individual tiger re-ID from flank crops — crops are saved to `backend/data/crops/` but the stripe-matching pipeline isn't built yet
+- **SpeciesID** — an EfficientNet-B4 fine-tuned on ~16 Nepal species (Greater One-horned Rhinoceros, Snow Leopard, Red Panda, Clouded Leopard, Asian Elephant, Gaur, Sambar Deer, Indian Leopard, Himalayan Black Bear, Sloth Bear, Nilgai, and others) to name the `OTHER_WILDLIFE` frames. Tiger and human are already resolved by FrameGuard upstream. Until the model is trained, non-tiger animals are labeled "Wildlife (unidentified)" — honest over wrong, since a general-purpose classifier mislabels region-specific species.
+- **Individual tiger re-ID** — matching the saved left/right flank crops by stripe pattern to identify individual tigers. This is the natural next layer on top of flank separation; the crops are already being captured for it.
+- **PulseScan** — statistical anomaly detection across detections over time: 2-hour activity windows, 30-day rolling baselines per camera and species, and five alert types (sudden absence, frequency spike, activity-time shift, group-size collapse, new-species appearance). Pure pandas/SciPy, no model weights. Surfaces alerts to the dashboard.
