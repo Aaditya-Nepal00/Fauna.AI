@@ -5,6 +5,7 @@ import ImageDetailModal from './ImageDetailModal.jsx';
 
 const CATEGORIES = [
   { key: 'TIGER',          label: 'Tiger' },
+  { key: 'FLANKS',         label: 'Flanks', summaryKey: 'TIGER' },
   { key: 'OTHER_WILDLIFE', label: 'Other wildlife' },
   { key: 'HUMAN',          label: 'Human' },
   { key: 'NON_OBJECT',     label: 'Non-object' },
@@ -79,10 +80,11 @@ export default function TriageBoard({ surveyId, refreshKey }) {
     getSummary(surveyId).then(setSummary).catch(() => {});
   }, [surveyId, refreshKey]);
 
-  // Fetch images for the active category
+  // Fetch images for the active category (FLANKS reuses TIGER query)
   useEffect(() => {
     setLoading(true);
-    getResults(surveyId, { triage: activeCategory })
+    const apiTriage = activeCategory === 'FLANKS' ? 'TIGER' : activeCategory;
+    getResults(surveyId, { triage: apiTriage })
       .then(setImages)
       .catch(() => setImages([]))
       .finally(() => setLoading(false));
@@ -97,8 +99,8 @@ export default function TriageBoard({ surveyId, refreshKey }) {
     <div>
       {/* Category tab bar */}
       <div className="flex border-b border-line/30 mb-8">
-        {CATEGORIES.map(({ key, label }) => {
-          const count = summary?.triage?.[key] ?? null;
+        {CATEGORIES.map(({ key, label, summaryKey }) => {
+          const count = summary?.triage?.[summaryKey ?? key] ?? null;
           const isActive = activeCategory === key;
           return (
             <button
@@ -173,6 +175,57 @@ export default function TriageBoard({ surveyId, refreshKey }) {
                 />
               </>
             )}
+          </div>
+        )
+      ) : activeCategory === 'FLANKS' ? (
+        loading ? (
+          <SkeletonGrid />
+        ) : (
+          <div className="space-y-10">
+            <p className="font-sans text-[13px] text-ink-mute">
+              Flank library — stripe patterns for individual ID
+            </p>
+            {(() => {
+              // Use crop_url when available, fall back to full image for older records
+              const flanksImages = images.map((img) => ({
+                ...img,
+                image_url: img.crop_url || img.image_url,
+              }));
+              const left      = flanksImages.filter((img) => img.flank === 'LEFT');
+              const right     = flanksImages.filter((img) => img.flank === 'RIGHT');
+              const uncertain = flanksImages.filter((img) => img.flank === 'UNCERTAIN');
+              return (
+                <div className="space-y-12">
+                  <FlankSection
+                    label="Left flank"
+                    accent="#E8853A"
+                    count={summary?.flank?.LEFT ?? left.length}
+                    images={left}
+                    onClickImage={setSelectedImage}
+                  />
+                  <div className="h-px bg-line/20" />
+                  <FlankSection
+                    label="Right flank"
+                    accent="#4A9D8E"
+                    count={summary?.flank?.RIGHT ?? right.length}
+                    images={right}
+                    onClickImage={setSelectedImage}
+                  />
+                  {(uncertain.length > 0 || (summary?.flank?.UNCERTAIN ?? 0) > 0) && (
+                    <>
+                      <div className="h-px bg-line/20" />
+                      <FlankSection
+                        label="Uncertain"
+                        accent="#6B7280"
+                        count={summary?.flank?.UNCERTAIN ?? uncertain.length}
+                        images={uncertain}
+                        onClickImage={setSelectedImage}
+                      />
+                    </>
+                  )}
+                </div>
+              );
+            })()}
           </div>
         )
       ) : loading ? (

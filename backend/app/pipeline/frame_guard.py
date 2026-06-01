@@ -1,7 +1,7 @@
 import logging
 import os
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 import cv2
@@ -47,6 +47,7 @@ class FrameGuardResult:
     processing_ms: int
     detections_count: int
     has_person: bool
+    crop_image: Optional[np.ndarray] = field(default=None, compare=False, repr=False)
 
 
 class FrameGuard:
@@ -73,7 +74,19 @@ class FrameGuard:
         # Detector backend — MegaDetectorV6 (default) or YOLO26 fallback
         if settings.DETECTOR_BACKEND == "megadetector":
             from PytorchWildlife.models import detection as pw_detection
+            # PytorchWildlife bug: MODEL_NAME ("MDV6b-yolov9-c.pt") doesn't match
+            # the actual filename wget saves ("MDV6-yolov9-c.pt"), so the cache check
+            # always misses and re-downloads on every startup. Pass the cached path
+            # directly when it exists to skip the download entirely.
+            _checkpoints = os.path.join(torch.hub.get_dir(), "checkpoints")
+            _cached_weights = None
+            for _candidate in ("MDV6-yolov9-c.pt", "MDV6b-yolov9-c.pt"):
+                _p = os.path.join(_checkpoints, _candidate)
+                if os.path.exists(_p):
+                    _cached_weights = _p
+                    break
             self.detector = pw_detection.MegaDetectorV6(
+                weights=_cached_weights,
                 device="cpu", pretrained=True, version=settings.MEGADETECTOR_VERSION
             )
             self.backend = "megadetector"
@@ -178,6 +191,30 @@ class FrameGuard:
         x2, y2 = min(w, x2 + pad_x), min(h, y2 + pad_y)
         return img_bgr[y1:y2, x1:x2]
 
+    def _flank_crop(self, img_bgr: np.ndarray, bbox: tuple) -> np.ndarray:
+        """
+        Tight zoomed crop of the tiger's striped torso for the Flanks library.
+        Insets each edge of the raw detector bbox inward by FLANK_CROP_INSET,
+        removing background, nose/tail tips, and lower legs.
+        Resizes so the longer edge is 640 px (INTER_AREA shrink, INTER_CUBIC enlarge).
+        """
+        from app.config import settings as _s
+        x1, y1, x2, y2 = bbox
+        bw, bh = x2 - x1, y2 - y1
+        inset = _s.FLANK_CROP_INSET
+        ix1 = max(0, int(x1 + bw * inset))
+        iy1 = max(0, int(y1 + bh * inset))
+        ix2 = min(img_bgr.shape[1], int(x2 - bw * inset))
+        iy2 = min(img_bgr.shape[0], int(y2 - bh * inset))
+        crop = img_bgr[iy1:iy2, ix1:ix2]
+        if crop.size == 0:
+            return crop
+        h, w = crop.shape[:2]
+        scale = 640 / max(h, w)
+        new_w, new_h = max(1, int(w * scale)), max(1, int(h * scale))
+        interp = cv2.INTER_AREA if scale < 1 else cv2.INTER_CUBIC
+        return cv2.resize(crop, (new_w, new_h), interpolation=interp)
+
     # ── ImageNet classification ──────────────────────────────────────────────
 
     def _classify_crop(self, crop_bgr: np.ndarray) -> tuple[int, str, float]:
@@ -247,7 +284,7 @@ class FrameGuard:
         defaults = dict(
             flank=None, flank_confidence=None, species_hint=None, species_confidence=None,
             crop_blur_score=None, blown_fraction=None,
-            has_person=False, detections_count=0,
+            has_person=False, detections_count=0, crop_image=None,
         )
         defaults.update(kwargs)
         return FrameGuardResult(**defaults)
@@ -409,6 +446,7 @@ class FrameGuard:
                     has_person=has_person,
                     detections_count=total_detections,
                     processing_ms=int((time.monotonic() - start) * 1000),
+                    crop_image=self._flank_crop(img_bgr, best_det["bbox"]),
                 )
 
             return self._result(

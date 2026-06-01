@@ -1,0 +1,28 @@
+# Camera trap images and all pipeline data directories — stays local, never pushed
+backend/data/
+
+# Model weights — obtained separately, placed manually (see README)
+*.pt
+*.onnx
+Model/
+
+# Partial download artifacts from PytorchWildlife / Ultralytics auto-fetch
+*.tmp
+
+# SQLite database — auto-created by the server on first startup
+*.db
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Local config and secrets (DATABASE_URL overrides, API keys, etc.)
+.env
+
+# Python virtual environments
+.venv/
+venv/
+
+# Node — installed packages and Vite build output
+node_modules/
+frontend/dist/

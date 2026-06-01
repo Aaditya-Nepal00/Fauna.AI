@@ -7,6 +7,8 @@ from pathlib import Path
 from typing import AsyncGenerator, Optional
 from uuid import uuid4
 
+import cv2
+
 import pandas as pd
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -213,6 +215,11 @@ class PipelineOrchestrator:
         image_id = await self._persist_image_result(
             db, camera_id, fg_result, sid_result, captured_at
         )
+
+        if fg_result.triage == TriageCategory.TIGER and fg_result.crop_image is not None:
+            crops_dir = Path(settings.DATA_RAW_DIR).parent / "crops"
+            crops_dir.mkdir(parents=True, exist_ok=True)
+            cv2.imwrite(str(crops_dir / f"{image_id}.jpg"), fg_result.crop_image)
 
         return ProcessingResult(
             image_id=image_id,

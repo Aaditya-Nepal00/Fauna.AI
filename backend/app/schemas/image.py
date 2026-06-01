@@ -20,6 +20,7 @@ class ImageResponse(BaseModel):
     height: Optional[int] = None
     camera_label: str = ""
     image_url: str = ""
+    crop_url: Optional[str] = None
 
     model_config = {"from_attributes": True}
 

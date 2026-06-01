@@ -24,6 +24,7 @@ class Settings(BaseSettings):
     FLARE_NIGHT_FRACTION: float = 0.05  # >5% blown pixels in a night frame → flash misfire
 
     FLANK_UNCERTAIN_THRESHOLD: float = 0.60  # below this confidence, flank is marked UNCERTAIN
+    FLANK_CROP_INSET: float = 0.12          # fraction of bbox to inset on each edge for the saved flank crop
 
     CONFIDENCE_FRAMEGUARD_CONFIRMED: float = 0.35
     CONFIDENCE_FRAMEGUARD_REVIEW_LOW: float = 0.15

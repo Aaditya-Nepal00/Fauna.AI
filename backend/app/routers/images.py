@@ -95,6 +95,7 @@ async def list_results(
     for pred in (await db.execute(preds_stmt)).scalars().all():
         fg_preds[pred.image_id] = pred.confidence
 
+    _crops_dir = Path(settings.DATA_RAW_DIR).parent / "crops"
     return [
         ImageResponse(
             id=img.id,
@@ -112,6 +113,11 @@ async def list_results(
             height=img.height,
             camera_label=camera_label or "",
             image_url=f"/api/images/{img.id}/file",
+            crop_url=(
+                f"/api/images/{img.id}/crop"
+                if img.triage == "TIGER" and (_crops_dir / f"{img.id}.jpg").exists()
+                else None
+            ),
         )
         for img, camera_label in rows
     ]
@@ -146,6 +152,14 @@ async def get_survey_summary(survey_id: str, db: AsyncSession = Depends(get_db))
             flank_counts[flank_val] = count
 
     return {"total": total, "triage": triage_counts, "flank": flank_counts}
+
+
+@router.get("/api/images/{image_id}/crop")
+async def get_image_crop(image_id: str):
+    crop_path = Path(settings.DATA_RAW_DIR).parent / "crops" / f"{image_id}.jpg"
+    if not crop_path.exists():
+        raise HTTPException(status_code=404, detail="Crop not found")
+    return FileResponse(str(crop_path))
 
 
 @router.get("/api/images/{image_id}/file")
@@ -206,6 +220,7 @@ async def review_image(
     )
     fg_pred = (await db.execute(fg_stmt)).scalar_one_or_none()
 
+    _crop_path = Path(settings.DATA_RAW_DIR).parent / "crops" / f"{image_id}.jpg"
     return ImageResponse(
         id=img.id,
         filename=img.filename,
@@ -222,4 +237,5 @@ async def review_image(
         height=img.height,
         camera_label=camera_label or "",
         image_url=f"/api/images/{image_id}/file",
+        crop_url=f"/api/images/{image_id}/crop" if _crop_path.exists() else None,
     )
