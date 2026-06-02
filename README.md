@@ -89,6 +89,27 @@ python -m app.watcher <survey_id> <camera_id> <path/to/watch/folder>
 
 Drop an image into the watched folder and it runs through FrameGuard immediately, printing results to the console — useful for live field demos without the upload UI.
 
+## Dashboard
+
+The live dashboard surfaces camera-trap intelligence to field teams in real time. Processing progress and pipeline results stream dynamically to the React interface over Server-Sent Events (SSE). Biologists can instantly track species distribution, verify triage classifications, check camera status, and identify individual tigers by analyzing flank patterns.
+
+## Screenshots
+
+**Triage Board — Left Flank Full-Frame View**
+![Triage Board - Left Flank](docs/screenshots/triage-left-flank.png)
+
+**Triage Board — Right Flank Full-Frame View**
+![Triage Board - Right Flank](docs/screenshots/triage-right-flank.png)
+
+**Flank Stripe Crops — Left Flanks**
+![Flank Stripe Crops - Left](docs/screenshots/flank-crops-left.png)
+
+**Flank Stripe Crops — Right Flanks**
+![Flank Stripe Crops - Right](docs/screenshots/flank-crops-right.png)
+
+**Image Detail Modal**
+![Image Detail Modal](docs/screenshots/image-detail.png)
+
 ## Model weights and data
 
 FrameGuard runs with real inference out of the box:
