@@ -17,72 +17,72 @@
     </marker>
   </defs>
 
-  <!-- Clean White Background -->
-  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <!-- Warm Off-White Background -->
+  <rect width="100%" height="100%" fill="#F7F5F2"/>
   
   <!-- Subtle Blueprint Grid Pattern -->
-  <g opacity="0.3">
-    <path d="M 0,40 L 1300,40 M 0,80 L 1300,80 M 0,120 L 1300,120 M 0,160 L 1300,160 M 0,200 L 1300,200 M 0,240 L 1300,240 M 0,280 L 1300,280 M 0,320 L 1300,320 M 0,360 L 1300,360 M 0,400 L 1300,400 M 0,440 L 1300,440 M 0,480 L 1300,480 M 0,520 L 1300,520 M 0,560 L 1300,560 M 0,600 L 1300,600 M 0,640 L 1300,640 M 0,680 L 1300,680 M 0,720 L 1300,720 M 0,760 L 1300,760 M 0,800 L 1300,800 M 0,840 L 1300,840 M 0,880 L 1300,880 M 0,920 L 1300,920 M 0,960 L 1300,960 M 0,1000 L 1300,1000 M 0,1040 L 1300,1040 M 0,1080 L 1300,1080 M 0,1120 L 1300,1120 M 0,1160 L 1300,1160 M 0,1200 L 1300,1200 M 0,1240 L 1300,1240 M 0,1280 L 1300,1280 M 0,1320 L 1300,1320 M 0,1360 L 1300,1360 M 0,1400 L 1300,1400 M 0,1440 L 1300,1440 M 0,1480 L 1300,1480 M 0,1520 L 1300,1520 M 0,1560 L 1300,1560 M 0,1600 L 1300,1600" stroke="#E4E4E7" stroke-width="1"/>
-    <path d="M 40,0 L 40,1620 M 80,0 L 80,1620 M 120,0 L 120,1620 M 160,0 L 160,1620 M 200,0 L 200,1620 M 240,0 L 240,1620 M 280,0 L 280,1620 M 320,0 L 320,1620 M 360,0 L 360,1620 M 400,0 L 400,1620 M 440,0 L 440,1620 M 480,0 L 480,1620 M 520,0 L 520,1620 M 560,0 L 560,1620 M 600,0 L 600,1620 M 640,0 L 640,1620 M 680,0 L 680,1620 M 720,0 L 720,1620 M 760,0 L 760,1620 M 800,0 L 800,1620 M 840,0 L 840,1620 M 880,0 L 880,1620 M 920,0 L 920,1620 M 960,0 L 960,1620 M 1000,0 L 1000,1620 M 1040,0 L 1040,1620 M 1080,0 L 1080,1620 M 1120,0 L 1120,1620 M 1160,0 L 1160,1620 M 1200,0 L 1200,1620 M 1240,0 L 1240,1620 M 1280,0 L 1280,1620" stroke="#E4E4E7" stroke-width="1"/>
+  <g opacity="0.2">
+    <path d="M 0,40 L 1300,40 M 0,80 L 1300,80 M 0,120 L 1300,120 M 0,160 L 1300,160 M 0,200 L 1300,200 M 0,240 L 1300,240 M 0,280 L 1300,280 M 0,320 L 1300,320 M 0,360 L 1300,360 M 0,400 L 1300,400 M 0,440 L 1300,440 M 0,480 L 1300,480 M 0,520 L 1300,520 M 0,560 L 1300,560 M 0,600 L 1300,600 M 0,640 L 1300,640 M 0,680 L 1300,680 M 0,720 L 1300,720 M 0,760 L 1300,760 M 0,800 L 1300,800 M 0,840 L 1300,840 M 0,880 L 1300,880 M 0,920 L 1300,920 M 0,960 L 1300,960 M 0,1000 L 1300,1000 M 0,1040 L 1300,1040 M 0,1080 L 1300,1080 M 0,1120 L 1300,1120 M 0,1160 L 1300,1160 M 0,1200 L 1300,1200 M 0,1240 L 1300,1240 M 0,1280 L 1300,1280 M 0,1320 L 1300,1320 M 0,1360 L 1300,1360 M 0,1400 L 1300,1400 M 0,1440 L 1300,1440 M 0,1480 L 1300,1480 M 0,1520 L 1300,1520 M 0,1560 L 1300,1560 M 0,1600 L 1300,1600" stroke="#DAD5CC" stroke-width="1"/>
+    <path d="M 40,0 L 40,1620 M 80,0 L 80,1620 M 120,0 L 120,1620 M 160,0 L 160,1620 M 200,0 L 200,1620 M 240,0 L 240,1620 M 280,0 L 280,1620 M 320,0 L 320,1620 M 360,0 L 360,1620 M 400,0 L 400,1620 M 440,0 L 440,1620 M 480,0 L 480,1620 M 520,0 L 520,1620 M 560,0 L 560,1620 M 600,0 L 600,1620 M 640,0 L 640,1620 M 680,0 L 680,1620 M 720,0 L 720,1620 M 760,0 L 760,1620 M 800,0 L 800,1620 M 840,0 L 840,1620 M 880,0 L 880,1620 M 920,0 L 920,1620 M 960,0 L 960,1620 M 1000,0 L 1000,1620 M 1040,0 L 1040,1620 M 1080,0 L 1080,1620 M 1120,0 L 1120,1620 M 1160,0 L 1160,1620 M 1200,0 L 1200,1620 M 1240,0 L 1240,1620 M 1280,0 L 1280,1620" stroke="#DAD5CC" stroke-width="1"/>
   </g>
 
   <!-- ==================== HEADER ==================== -->
   <g transform="translate(0, 0)">
     <text x="650" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="800" fill="#1F2937" text-anchor="middle" letter-spacing="1">FAUNA.AI — SYSTEM ARCHITECTURE</text>
     <text x="650" y="82" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#6B7280" text-anchor="middle">Triage &amp; Flank Monitoring System for WWF Nepal Tiger Survey</text>
-    <line x1="100" y1="105" x2="1200" y2="105" stroke="#E4E4E7" stroke-width="1"/>
+    <line x1="100" y1="105" x2="1200" y2="105" stroke="#DAD5CC" stroke-width="1"/>
   </g>
 
   <!-- ==================== TIER 1: FIELD COLLECTION / DATA SOURCE ==================== -->
   <g id="user-tier" transform="translate(0, 130)">
     <!-- Container Band -->
-    <rect x="80" y="0" width="1140" height="120" rx="8" ry="8" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="1" filter="url(#boxShadow)"/>
-    <text x="100" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#9CA3AF" letter-spacing="1.5">01. FIELD COLLECTION / DATA SOURCE</text>
+    <rect x="80" y="0" width="1140" height="120" rx="8" ry="8" fill="#EFEBE5" stroke="#DAD5CC" stroke-width="1" filter="url(#boxShadow)"/>
+    <text x="100" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#6B7280" letter-spacing="1.5">01. FIELD COLLECTION / DATA SOURCE</text>
     
     <!-- Field Researcher Box -->
-    <rect x="180" y="45" width="380" height="55" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="180" y="45" width="380" height="55" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="370" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="middle">Field Biologist / Camera-Trap</text>
     <text x="370" y="86" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">Collects and extracts raw camera-trap SD card images</text>
     
     <!-- Image Assets Info -->
-    <rect x="740" y="45" width="380" height="55" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" stroke-dasharray="3,3"/>
+    <rect x="740" y="45" width="380" height="55" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="930" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="middle">Raw Images (JPEG/PNG)</text>
     <text x="930" y="86" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">Full Resolution frames (e.g. 2048x1536 px)</text>
 
     <!-- Connectors inside Tier -->
-    <path d="M 560,72.5 L 730,72.5" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow-light)"/>
+    <path d="M 560,72.5 L 730,72.5" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#arrow-light)"/>
   </g>
 
   <!-- ==================== TIER 2: PRESENTATION TIER (REACT FRONTEND) ==================== -->
   <g id="presentation-tier" transform="translate(0, 290)">
     <!-- Container Band -->
-    <rect x="80" y="0" width="1140" height="200" rx="8" ry="8" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="1" filter="url(#boxShadow)"/>
-    <text x="100" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#9CA3AF" letter-spacing="1.5">02. PRESENTATION TIER (REACT FRONTEND)</text>
-    <text x="1120" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#9CA3AF" text-anchor="end">React 18 / Vite / Tailwind CSS / react-router</text>
+    <rect x="80" y="0" width="1140" height="200" rx="8" ry="8" fill="#EFEBE5" stroke="#DAD5CC" stroke-width="1" filter="url(#boxShadow)"/>
+    <text x="100" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#6B7280" letter-spacing="1.5">02. PRESENTATION TIER (REACT FRONTEND)</text>
+    <text x="1120" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#6B7280" text-anchor="end">React 18 / Vite / Tailwind CSS / react-router</text>
 
     <!-- Dashboard Panel -->
-    <rect x="120" y="55" width="230" height="110" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="120" y="55" width="230" height="110" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="235" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="middle">Dashboard</text>
     <text x="235" y="101" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">Triage statistics overview</text>
     <text x="235" y="117" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">Flank count &amp; species distribution</text>
     <text x="235" y="142" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#9CA3AF" text-anchor="middle">&lt;Dashboard /&gt;</text>
 
     <!-- Upload Panel -->
-    <rect x="390" y="55" width="230" height="110" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="390" y="55" width="230" height="110" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="505" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="middle">Upload Panel</text>
     <text x="505" y="101" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">Batch image uploader</text>
     <text x="505" y="117" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">Drag-and-drop support</text>
     <text x="505" y="142" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#9CA3AF" text-anchor="middle">&lt;UploadPanel /&gt;</text>
 
     <!-- Triage Board -->
-    <rect x="660" y="55" width="250" height="110" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="660" y="55" width="250" height="110" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="785" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="middle">Triage Board</text>
     <text x="785" y="101" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">Tiger / Wild / Human / Blur lanes</text>
     <text x="785" y="117" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#E8853A" text-anchor="middle">Left / Right / Uncertain flanks</text>
     <text x="785" y="142" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#9CA3AF" text-anchor="middle">&lt;TriageBoard /&gt;</text>
 
     <!-- SSE Listener -->
-    <rect x="950" y="55" width="210" height="110" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="950" y="55" width="210" height="110" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="1055" y="78" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="middle">SSE Listener</text>
     <text x="1055" y="101" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">EventSource listening</text>
     <text x="1055" y="117" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#E8853A" text-anchor="middle">Real-time update stream</text>
@@ -92,33 +92,33 @@
   <!-- ==================== TIER 3: APPLICATION TIER (FASTAPI BACKEND) ==================== -->
   <g id="application-tier" transform="translate(0, 530)">
     <!-- Container Band -->
-    <rect x="80" y="0" width="1140" height="320" rx="8" ry="8" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="1" filter="url(#boxShadow)"/>
-    <text x="100" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#9CA3AF" letter-spacing="1.5">03. APPLICATION TIER (FASTAPI BACKEND)</text>
-    <text x="1120" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#9CA3AF" text-anchor="end">FastAPI / Uvicorn / SQLAlchemy (sqlite3)</text>
+    <rect x="80" y="0" width="1140" height="320" rx="8" ry="8" fill="#EFEBE5" stroke="#DAD5CC" stroke-width="1" filter="url(#boxShadow)"/>
+    <text x="100" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#6B7280" letter-spacing="1.5">03. APPLICATION TIER (FASTAPI BACKEND)</text>
+    <text x="1120" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#6B7280" text-anchor="end">FastAPI / Uvicorn / SQLAlchemy (sqlite3)</text>
 
     <!-- REST Controllers -->
-    <rect x="120" y="65" width="320" height="90" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="120" y="65" width="320" height="90" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="280" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="middle">API Router (REST Endpoints)</text>
     <text x="280" y="110" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#6B7280" text-anchor="middle">POST /api/images/upload  (Upload)</text>
     <text x="280" y="125" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#6B7280" text-anchor="middle">GET  /api/images/summary (Stats)</text>
     <text x="280" y="140" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#6B7280" text-anchor="middle">GET  /api/images/triage  (Board Items)</text>
 
     <!-- SSE Dispatcher -->
-    <rect x="840" y="65" width="320" height="90" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="840" y="65" width="320" height="90" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="1000" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="middle">Server-Sent Events (SSE)</text>
     <text x="1000" y="110" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#6B7280" text-anchor="middle">GET /api/triage/stream</text>
     <text x="1000" y="125" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#E8853A" text-anchor="middle">Dispatches real-time frame progress</text>
     <text x="1000" y="140" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#E8853A" text-anchor="middle">updates to connected frontend clients</text>
 
     <!-- Pipeline Orchestrator -->
-    <rect x="360" y="205" width="580" height="90" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="360" y="205" width="580" height="90" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="650" y="228" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#1F2937" text-anchor="middle">Pipeline Orchestrator</text>
     <text x="650" y="249" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">Manages asynchronous processing queue via BackgroundTasks</text>
     <text x="650" y="264" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#6B7280" text-anchor="middle">Extracts image metadata, feeds AI engine, logs database records</text>
     <text x="650" y="281" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#9CA3AF" text-anchor="middle">backend.app.pipeline.orchestrator.Orchestrator</text>
 
-    <!-- PulseScan (Planned Component) -->
-    <rect x="120" y="205" width="220" height="90" rx="6" ry="6" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.2" stroke-dasharray="4,4" filter="url(#boxShadow)"/>
+    <!-- PulseScan (Planned Component - Solid Border) -->
+    <rect x="120" y="205" width="220" height="90" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="230" y="228" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#6B7280" text-anchor="middle">PulseScan</text>
     <text x="230" y="250" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#9CA3AF" text-anchor="middle">Statistical anomaly analyzer</text>
     <text x="230" y="266" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#9CA3AF" text-anchor="middle">Rolling baselines &amp; windows</text>
@@ -135,9 +135,9 @@
 
   <!-- ==================== TIER 4: AI PIPELINE (FRAMEGUARD) ==================== -->
   <g id="ai-tier" transform="translate(0, 890)">
-    <!-- Container Band (Warm tint fill and amber accent highlight border) -->
-    <rect x="80" y="0" width="1140" height="470" rx="8" ry="8" fill="#FCFBF9" stroke="#E8853A" stroke-width="1.5" filter="url(#boxShadow)"/>
-    <rect x="90" y="10" width="1120" height="28" rx="4" ry="4" fill="#E8853A" opacity="0.05"/>
+    <!-- Container Band (Amber border highlight accent, warm deeper fill #EFEBE5) -->
+    <rect x="80" y="0" width="1140" height="470" rx="8" ry="8" fill="#EFEBE5" stroke="#E8853A" stroke-width="2" filter="url(#boxShadow)"/>
+    <rect x="90" y="10" width="1120" height="28" rx="4" ry="4" fill="#E8853A" opacity="0.08"/>
     <text x="100" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#E8853A" letter-spacing="1.5">04. AI PIPELINE &amp; ENGINE (FRAMEGUARD)</text>
     <text x="1120" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#E8853A" text-anchor="end">Core Machine Learning Pipeline (Python 3.11 / PyTorch)</text>
 
@@ -162,8 +162,8 @@
     <text x="650" y="395" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#E8853A" text-anchor="middle">Evaluates Full-Frame context (matches training) to prevent domain-mismatch errors</text>
     <text x="650" y="412" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" fill="#4B5563" text-anchor="middle">Outputs: LEFT FLANK | RIGHT FLANK | UNCERTAIN FLANK (<tspan font-family="ui-monospace, SFMono-Regular, monospace" font-size="10" fill="#4B5563">&lt; 0.60</tspan> confidence score)</text>
 
-    <!-- SpeciesID (Planned Component) -->
-    <rect x="970" y="195" width="220" height="90" rx="6" ry="6" fill="#FFFFFF" stroke="#9CA3AF" stroke-width="1.2" stroke-dasharray="4,4" filter="url(#boxShadow)"/>
+    <!-- SpeciesID (Planned Component - Solid Border) -->
+    <rect x="970" y="195" width="220" height="90" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="1080" y="218" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#6B7280" text-anchor="middle">SpeciesID</text>
     <text x="1080" y="240" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#9CA3AF" text-anchor="middle">Layer 2 classification for</text>
     <text x="1080" y="256" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#9CA3AF" text-anchor="middle">non-tiger wildlife species</text>
@@ -177,35 +177,35 @@
     <path d="M 650,145 L 650,195" stroke="#E8853A" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
     <path d="M 650,285 L 650,335" stroke="#E8853A" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
 
-    <!-- L2 -> SpeciesID Arrow (Planned) -->
-    <path d="M 940,240 L 965,240" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-light)"/>
+    <!-- L2 -> SpeciesID Arrow (Planned - Solid Arrow) -->
+    <path d="M 940,240 L 965,240" stroke="#9CA3AF" stroke-width="1.5" fill="none" marker-end="url(#arrow-light)"/>
     <text x="952.5" y="233" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="600" fill="#9CA3AF" text-anchor="middle">OTHER_WILDLIFE</text>
 
-    <!-- Side Gate Outputs -->
-    <path d="M 360,100 L 220,100 L 220,440 L 400,440" stroke="#4B5563" stroke-width="1.2" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-gray)"/>
+    <!-- Side Gate Outputs (Solid Lines) -->
+    <path d="M 360,100 L 220,100 L 220,440 L 400,440" stroke="#4B5563" stroke-width="1.2" fill="none" marker-end="url(#arrow-gray)"/>
     <text x="210" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#6B7280" text-anchor="middle">Triage: BLUR / EMPTY</text>
 
-    <path d="M 360,240 L 250,240 L 250,440 L 400,440" stroke="#4B5563" stroke-width="1.2" stroke-dasharray="3,3" fill="none" marker-end="url(#arrow-gray)"/>
+    <path d="M 360,240 L 250,240 L 250,440 L 400,440" stroke="#4B5563" stroke-width="1.2" fill="none" marker-end="url(#arrow-gray)"/>
     <text x="210" y="230" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#6B7280" text-anchor="middle">Triage: HUMAN / OTHER</text>
 
-    <rect x="400" y="415" width="500" height="40" rx="4" ry="4" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="400" y="415" width="500" height="40" rx="4" ry="4" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="650" y="439" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#1F2937" text-anchor="middle">Unified FrameGuard Triage Result Struct</text>
   </g>
 
   <!-- ==================== TIER 5: STORAGE & PERSISTENCE ==================== -->
   <g id="storage-tier" transform="translate(0, 1390)">
     <!-- Container Band -->
-    <rect x="80" y="0" width="1140" height="150" rx="8" ry="8" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="1" filter="url(#boxShadow)"/>
-    <text x="100" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#9CA3AF" letter-spacing="1.5">05. PERSISTENCE &amp; STORAGE TIER</text>
+    <rect x="80" y="0" width="1140" height="150" rx="8" ry="8" fill="#EFEBE5" stroke="#DAD5CC" stroke-width="1" filter="url(#boxShadow)"/>
+    <text x="100" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#6B7280" letter-spacing="1.5">05. PERSISTENCE &amp; STORAGE TIER</text>
 
     <!-- Local Filesystem -->
-    <rect x="180" y="48" width="380" height="75" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="180" y="48" width="380" height="75" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="370" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="middle">Local Image Directory</text>
     <text x="370" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#6B7280" text-anchor="middle">backend/data/raw/ &amp; backend/data/crops/</text>
     <text x="370" y="107" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#6B7280" text-anchor="middle">Stores raw uploads and MegaDetector AI crops</text>
 
     <!-- SQLite Database -->
-    <rect x="740" y="48" width="380" height="75" rx="6" ry="6" fill="#FFFFFF" stroke="#D4D4D8" stroke-width="1" filter="url(#boxShadow)"/>
+    <rect x="740" y="48" width="380" height="75" rx="6" ry="6" fill="#FFFFFF" stroke="#D6D1C8" stroke-width="1" filter="url(#boxShadow)"/>
     <text x="930" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#1F2937" text-anchor="middle">SQLite Database (fauna.db)</text>
     <text x="930" y="92" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" fill="#6B7280" text-anchor="middle">SQLAlchemy tables: images, surveys</text>
     <text x="930" y="107" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#6B7280" text-anchor="middle">Stores image classification tags, paths, confidences, &amp; surveys</text>
@@ -237,16 +237,16 @@
   <path d="M 750,825 L 750,845 L 900,845 L 900,1390 L 930,1390 L 930,1435" stroke="#4B5563" stroke-width="1.5" fill="none" marker-end="url(#arrow-gray)"/>
   <text x="910" y="863" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#6B7280">Persist Metadata</text>
 
-  <!-- DB Updates -> SSE Stream -->
-  <path d="M 960,1438 L 960,1380 L 1020,1380 L 1020,685 L 1010,685" stroke="#E8853A" stroke-width="1.5" fill="none" marker-end="url(#arrow-amber)" stroke-dasharray="3,3"/>
+  <!-- DB Updates -> SSE Stream (Solid Line) -->
+  <path d="M 960,1438 L 960,1380 L 1020,1380 L 1020,685 L 1010,685" stroke="#E8853A" stroke-width="1.5" fill="none" marker-end="url(#arrow-amber)"/>
   <text x="1030" y="1120" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#E8853A" transform="rotate(90 1030 1120)">Database Query &amp; Stream Dispatch</text>
 
   <!-- SSE Dispatch -> Front SSE Listener -->
   <path d="M 1000,650 L 1000,470 L 1055,470 L 1055,455" stroke="#E8853A" stroke-width="1.5" fill="none" marker-end="url(#arrow-amber)"/>
   <text x="1065" y="523" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#E8853A">Real-time Server-Sent Events</text>
 
-  <!-- Front SSE Listener / Dashboard UI Updates -->
-  <path d="M 1055,345 L 1055,320 L 785,320 L 785,345" stroke="#4B5563" stroke-width="1.2" stroke-dasharray="2,2" fill="none" marker-end="url(#arrow-gray)"/>
-  <path d="M 1055,320 L 235,320 L 235,345" stroke="#4B5563" stroke-width="1.2" stroke-dasharray="2,2" fill="none" marker-end="url(#arrow-gray)"/>
+  <!-- Front SSE Listener / Dashboard UI Updates (Solid Lines) -->
+  <path d="M 1055,345 L 1055,320 L 785,320 L 785,345" stroke="#4B5563" stroke-width="1.2" fill="none" marker-end="url(#arrow-gray)"/>
+  <path d="M 1055,320 L 235,320 L 235,345" stroke="#4B5563" stroke-width="1.2" fill="none" marker-end="url(#arrow-gray)"/>
   <text x="640" y="313" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#6B7280" text-anchor="middle">Triggers React State Updates &amp; Re-renders</text>
 </svg>
