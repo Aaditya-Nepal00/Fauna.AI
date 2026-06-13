@@ -1,28 +1,31 @@
-# Camera trap images and all pipeline data directories — stays local, never pushed
+# ===== Datasets - never commit (gigabytes) =====
+Tiger_Photo_Esewa/
+Individual/
+dataset/
+subset_for_colab/
+
+
+# ===== Runtime data =====
 backend/data/
-
-# Model weights — obtained separately, placed manually (see README)
-*.pt
-*.onnx
-Model/
-
-# Partial download artifacts from PytorchWildlife / Ultralytics auto-fetch
-*.tmp
-
-# SQLite database — auto-created by the server on first startup
 *.db
+*.log
 
-# Python bytecode
+# ===== Model caches (auto-downloaded on first run) =====
+*.tmp
+MDV6-*.tmp
+
+# ===== Smoke-test artifacts =====
+backend/smoke_screens/
+
+# ===== Python / Node / OS =====
 __pycache__/
 *.pyc
-
-# Local config and secrets (DATABASE_URL overrides, API keys, etc.)
-.env
-
-# Python virtual environments
-.venv/
+.ipynb_checkpoints/
 venv/
-
-# Node — installed packages and Vite build output
+.venv/
+.env
 node_modules/
+frontend/node_modules/
 frontend/dist/
+.DS_Store
+Thumbs.db
